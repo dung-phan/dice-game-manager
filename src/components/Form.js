@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function Form(props) {
   const { handleSubmit, handleChange, values } = props;
-  console.log('check values', props.values);
   const { email, password } = values;
   return (
     <form onSubmit={handleSubmit}>

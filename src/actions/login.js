@@ -6,7 +6,7 @@ const userLogIn = jwt => ({
   type: USER_LOGIN,
   payload: jwt
 });
-const baseUrl = 'http://localhost:4000/login';
+const baseUrl = 'http://localhost:4000';
 export const login = (email, password) => dispatch => {
   console.log('email and password', email, password);
   superagent

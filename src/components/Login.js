@@ -7,7 +7,7 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('Does this work');
+
     this.props.login(this.state.email, this.state.password);
     console.log('check state in handlesubmit', this.state);
   };
@@ -15,12 +15,11 @@ class Login extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('check state in handlechange', this.state);
   };
   render() {
     return (
       <div>
-        {console.log('check values', this.state)}
+        Log In
         <Form
           values={this.state}
           handleSubmit={this.handleSubmit}
