@@ -6,10 +6,18 @@ class Lobby extends React.Component {
     componentWillMount(){
         this.props.loadTables()
     }
-    render(){        
+    render(){
+        if (!this.props.tables) return 'Loading...'        
         return (
             <div>
-                Lobby 
+                Lobby
+                <ul>
+                    {this.props.tables.map(
+                        table => {
+                            return <li key={table.id}>Table: {table.name} is {table.status}</li>
+                        }
+                    )}
+                </ul> 
             </div>
         )
     }
