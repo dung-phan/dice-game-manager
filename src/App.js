@@ -7,6 +7,8 @@ import Login from './components/Login';
 import Lobby from './components/Lobby';
 import Control from './components/Control';
 import Streaming from './components/Streaming';
+import Lobby from './components/Lobby'
+import TableDetailsContainer from './components/TableDetailsContainer'
 import './App.css';
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Route path='/lobby' exact component={Lobby} />
       <Route path='/table/1/game' exact component={Control} />
       <Route path='/table/1/game' exact component={Streaming} />
+    <Route path="/table/:id" exact component={TableDetailsContainer} />
     </div>
   );
 }
