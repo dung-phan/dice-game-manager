@@ -1,9 +1,10 @@
 import React from 'react';
 import Streaming from './Streaming';
 import Control from './Control';
+
 export default function GameScreen() {
   return (
-    <div className='ui segment'>
+    <div>
       <div className='ui two column very relaxed grid'>
         <div className='column'>
           <Streaming />
