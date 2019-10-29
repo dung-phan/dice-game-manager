@@ -4,23 +4,27 @@ import { Route } from 'react-router-dom';
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import Lobby from './components/Lobby'
+import Lobby from './components/Lobby';
+import Control from './components/Control';
+import Streaming from './components/Streaming';
+import './App.css';
 function App() {
   return (
     <div>
-    <Route path='/' exact component={Home} />
-    <Route path='/signup' exact component={SignUp} />
-    <Route path='/login' exact component={Login} />
-    <Route path='/lobby' exact component={Lobby} />
+      <Route path='/' exact component={Home} />
+      <Route path='/signup' exact component={SignUp} />
+      <Route path='/login' exact component={Login} />
+      <Route path='/lobby' exact component={Lobby} />
+      <Route path='/table/1/game' exact component={Control} />
+      <Route path='/table/1/game' exact component={Streaming} />
     </div>
-    );
-  }
-  
-  const MapStateToProps = state => {
-    console.log('Check the state in App', state);
-    return {
-      loggedIn: state.auth !== ''
-    };
+  );
+}
+
+const MapStateToProps = state => {
+  console.log('Check the state in App', state);
+  return {
+    loggedIn: state.auth !== ''
   };
-  export default connect(MapStateToProps)(App);
-  
+};
+export default connect(MapStateToProps)(App);
