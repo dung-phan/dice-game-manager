@@ -5,10 +5,8 @@ import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Lobby from './components/Lobby';
-import Control from './components/Control';
-import Streaming from './components/Streaming';
-import Lobby from './components/Lobby'
-import TableDetailsContainer from './components/TableDetailsContainer'
+import GameScreen from './components/GameScreen';
+import TableDetailsContainer from './components/TableDetailsContainer';
 import './App.css';
 function App() {
   return (
@@ -17,9 +15,9 @@ function App() {
       <Route path='/signup' exact component={SignUp} />
       <Route path='/login' exact component={Login} />
       <Route path='/lobby' exact component={Lobby} />
-      <Route path='/table/1/game' exact component={Control} />
-      <Route path='/table/1/game' exact component={Streaming} />
-    <Route path="/table/:id" exact component={TableDetailsContainer} />
+      <Route path='/table/:id/game' exact component={GameScreen} />
+
+      <Route path='/table/:id' exact component={TableDetailsContainer} />
     </div>
   );
 }
