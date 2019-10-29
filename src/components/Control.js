@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
+import { bidPlayer, challengePlayer } from '../actions/startgame';
 
-export class Control extends Component {
+import { connect } from 'react-redux';
+class Control extends Component {
+  handleBid = () => {
+    console.log('check handle bid');
+  };
+  handleChallenge = () => {
+    console.log('check handle challenge');
+  };
   render() {
     return (
       <div>
         {' '}
-        <h1>Control table</h1>
-        <h3>Dice of host</h3>
-        <button>Bid</button>
-        <button>Challenge</button>
-        <h3>Dice of guest</h3>
+        <h3>Dice results</h3>
+        <button className='ui basic button' onClick={this.handleBid}>
+          Bid
+        </button>
+        <br />
+        <br />
+        <button className='ui basic button' onClick={this.handleChallenge}>
+          Challenge
+        </button>
       </div>
     );
   }
 }
 
-export default Control;
+export default connect(
+  null,
+  { bidPlayer, challengePlayer }
+)(Control);
