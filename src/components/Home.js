@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import SignUp from './SignUp';
-import Login from './Login'
+import { Link } from 'react-router-dom'
+
 function Home(props) {
   return (
     props.loggedIn ? 'You are logged in' : 
     <div>
-    <SignUp/>
-    <Login />
+    <Link to='/signup'>SIGN UP HERE</Link>
+    <br />
+    <Link to='/login'>LOG IN HERE</Link>
+    <br />
+    <Link to='/lobby'>TO THE LOBBY</Link>
     </div>
     )
   }

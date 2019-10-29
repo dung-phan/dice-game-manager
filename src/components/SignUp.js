@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import Form from './Form';
 import { connect } from 'react-redux';
+import {signup} from '../actions/signup'
 class SignUp extends Component {
   state = { email: '', password: '' };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('Does this work');
-    this.props.login(this.state.email, this.state.password);
-    console.log('check state in handlesubmit', this.state);
+    this.props.signup(this.state.email, this.state.password);
+    this.props.history.push('/login')
   };
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('check state in handlechange', this.state);
   };
   render() {
     return (
@@ -30,4 +29,4 @@ class SignUp extends Component {
   }
 }
 
-export default connect()(SignUp);
+export default connect(null, {signup})(SignUp);

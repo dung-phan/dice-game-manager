@@ -9,7 +9,7 @@ class Login extends Component {
     event.preventDefault();
 
     this.props.login(this.state.email, this.state.password);
-    console.log('check state in handlesubmit', this.state);
+    this.props.history.push('/lobby')
   };
   handleChange = event => {
     this.setState({
