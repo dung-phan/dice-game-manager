@@ -19,10 +19,24 @@ export const loadTables = () => (dispatch, getState) => {
     .catch(console.error); // if you don't console response, check the console for errors
 };
 
+export const FETCH_TABLE_SUCCESS = "FETCH_TABLE_SUCCESS";
+
+const fetchTableSuccess = table => ({
+  type: FETCH_TABLE_SUCCESS,
+  payload: table
+});
+
+export const loadTable = id => (dispatch, getState) => {
+  superagent.get(`${baseUrl}/table/${id}`).then(response => {
+    dispatch(fetchTableSuccess(response.body));
+  });
+};
+
 export const TABLE_JOINED = "TABLE_JOINED";
 
-const tableJoined = (tableId) => ({
+const tableJoined = (table) => ({
     type: TABLE_JOINED,
+    payload: table
 });
 
 export const joinTable = (tableId) => (dispatch, getState) => {

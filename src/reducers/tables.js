@@ -6,7 +6,6 @@ export default (state = [], action = {}) => {
     case TABLES_FETCHED:
       // console.log("NEW STATE", [...state, ...action.payload]); // try your transformation here
       return [...state, ...action.payload];
-    
     default:
       return state;
   }

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Lobby from './components/Lobby'
+import TableDetailsContainer from './components/TableDetailsContainer'
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
     <Route path='/signup' exact component={SignUp} />
     <Route path='/login' exact component={Login} />
     <Route path='/lobby' exact component={Lobby} />
+    <Route path="/table/:id" exact component={TableDetailsContainer} />
     </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {loadTables, joinTable} from '../actions/table' 
 
 class Lobby extends React.Component {
@@ -23,9 +24,8 @@ class Lobby extends React.Component {
                     {this.props.tables.map(
                         table => (
                             <li key={table.id}>
-                            Table: {table.name} is {table.status}
-                            <button name={table.id} onClick={this.onClick}>Join</button>
-                            </li>)
+                                <Link to={`/table/${table.id}`}>Table: {table.name} is {table.status} </Link>
+                           </li>)
                     )}
                 </ul> 
             </div>
