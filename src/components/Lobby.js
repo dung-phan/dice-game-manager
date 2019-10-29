@@ -1,13 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {loadTables} from '../actions/table' 
+import {loadTables, joinTable} from '../actions/table' 
 
 class Lobby extends React.Component {
-    componentWillMount(){
+    componentDidMount(){
         this.props.loadTables()
     }
     onClick = (event) => {
-        //joinTable
+        console.log(event.target.name)
+        this.props.joinTable(event.target.name)
+        //joinTable()
+        // create action joinTable()
         //sent a put request to /table/:id
 
     }
@@ -21,7 +24,7 @@ class Lobby extends React.Component {
                         table => (
                             <li key={table.id}>
                             Table: {table.name} is {table.status}
-                            <button onClick={this.onClick}>Join</button>
+                            <button name={table.id} onClick={this.onClick}>Join</button>
                             </li>)
                     )}
                 </ul> 
@@ -33,5 +36,5 @@ const mapStateToProps = (state) =>({
     tables: state.tables
 })
             
-export default connect(mapStateToProps, {loadTables})(Lobby)
+export default connect(mapStateToProps, {loadTables, joinTable})(Lobby)
             
