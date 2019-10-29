@@ -6,6 +6,11 @@ class Lobby extends React.Component {
     componentWillMount(){
         this.props.loadTables()
     }
+    onClick = (event) => {
+        //joinTable
+        //sent a put request to /table/:id
+
+    }
     render(){
         if (!this.props.tables) return 'Loading...'        
         return (
@@ -13,9 +18,11 @@ class Lobby extends React.Component {
                 Lobby
                 <ul>
                     {this.props.tables.map(
-                        table => {
-                            return <li key={table.id}>Table: {table.name} is {table.status}</li>
-                        }
+                        table => (
+                            <li key={table.id}>
+                            Table: {table.name} is {table.status}
+                            <button onClick={this.onClick}>Join</button>
+                            </li>)
                     )}
                 </ul> 
             </div>
@@ -25,5 +32,6 @@ class Lobby extends React.Component {
 const mapStateToProps = (state) =>({
     tables: state.tables
 })
-
+            
 export default connect(mapStateToProps, {loadTables})(Lobby)
+            

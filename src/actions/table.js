@@ -17,4 +17,5 @@ export const loadTables = () => (dispatch, getState) => {
       dispatch(tablesFetched(response.body)); // check redux devtools if action got dispatched
     })
     .catch(console.error); // if you don't console response, check the console for errors
-  };
+};
+export const TABLE_JOINED = "TABLE_JOINED";
