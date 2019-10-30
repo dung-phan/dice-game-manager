@@ -3,14 +3,20 @@ import TableDetails from './TableDetails';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loadTable } from '../actions/table';
+import {baseUrl} from '../constants'
 
 class TableDetailsContainer extends React.Component {
+  source = new EventSource(`${baseUrl}/table/${this.props.match.params.id}`)
   componentDidMount() {
-    this.props.loadTable(Number(this.props.match.params.id));
+    console.log(this.source)
+    this.source.onmessage = event => {
+      console.log("Got a message!", event)
+      // const messages = JSON.parse(event.data)
+      // this.setState({messages})
+  }
   }
   handleClick = () => {
     console.log('check handle click');
-    this.props.history.push('/table/1/game');
   };
   render() {
     console.log(this.props.table);

@@ -3,15 +3,17 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Home(props) {
-  return props.loggedIn ? (
-    'You are logged in'
-  ) : (
+  return (
     <div>
-      <Link to='/signup'>Are you new? Sign up here! </Link>
+       {!props.loggedIn ? (
+        <div>
+          <Link to='/signup'>Are you new? Sign up here! </Link>
+          <br />
+          <Link to='/login'>Log in</Link>
+        </div>
+      ) : ('You are logged in')}
       <br />
-      <Link to='/login'>Log in</Link>
-      <br />
-      <Link to='/lobby'>To the game room</Link>
+      <Link to='/lobby'>To the game lobby</Link>
     </div>
   );
 }
