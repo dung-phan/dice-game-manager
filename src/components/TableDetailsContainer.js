@@ -2,7 +2,7 @@ import React from 'react';
 import TableDetails from './TableDetails';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadTable } from '../actions/table';
+import { updateTable } from '../actions/table';
 import {baseUrl} from '../constants'
 
 class TableDetailsContainer extends React.Component {
@@ -11,6 +11,9 @@ class TableDetailsContainer extends React.Component {
     console.log(this.source)
     this.source.onmessage = event => {
       console.log("Got a message!", event)
+      const table = JSON.parse(event.data)
+      this.props.updateTable(table)
+      console.log(table)
       // const messages = JSON.parse(event.data)
       // this.setState({messages})
   }
@@ -44,5 +47,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadTable }
+  { updateTable }
 )(TableDetailsContainer);
