@@ -1,11 +1,7 @@
 import superagent from 'superagent';
 const baseUrl = 'http://localhost:4000';
-export const START_GAME = 'START_GAME';
-export const PLAYER_BID = 'PLAYER_BID';
-export const PLAYER_CHALLENGE = 'PLAYER_CHALLENGE';
-export const LOGS_GAME_UPDATE = 'LOGS_GAME_UPDATE';
 
-export const gameStart = id => () => {
+export const gameStart = () => () => {
   let diceRollOne = Array(5)
     .fill()
     .map(() => Math.round(Math.random() * 5 + 1))
@@ -18,17 +14,17 @@ export const gameStart = id => () => {
     .toString();
   console.log('check if start game works');
   superagent
-    .put(`${baseUrl}/table/${id}/start`)
-    .send(diceRollOne, diceRollTwo)
-    .then(response => console.log('Check response', response.body))
+    .put(`${baseUrl}/table/1/start`)
+    .send({ diceRoll1: diceRollOne, diceRoll2: diceRollTwo })
     .catch(console.error);
 };
 
 export const bidPlayer = (bidNumber, bidDiceType) => () => {
+  console.log(typeof bidNumber);
   superagent
-    .post(`${baseUrl}/table/1/bid`)
-    .send(bidNumber, bidDiceType)
-    .then(response => console.log('Check response', response.body))
+    .put(`${baseUrl}/table/1/bid`)
+    .send({ bidNumber: Number(bidNumber), bidDiceType: bidDiceType })
+    .then(response => console.log('Check what i sent', bidNumber, bidDiceType))
     .catch(console.error);
 };
 
