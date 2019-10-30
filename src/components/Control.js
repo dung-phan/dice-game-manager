@@ -7,10 +7,7 @@ class Control extends Component {
     bidNumber: '',
     bidDiceType: ''
   };
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log('check handle bid');
-  };
+
   handleChange = event => {
     this.setState({ bidNumber: event.target.value });
     console.log('check state', this.state);
@@ -18,6 +15,12 @@ class Control extends Component {
   handleOtherChange = event => {
     this.setState({ bidDiceType: event.target.value });
     console.log('check state', this.state);
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log('check handle bid');
+    console.log('check state in handle submit', this.state);
+    this.props.bidPlayer(this.state.bidNumber, this.state.bidDiceType);
   };
   handleChallenge = () => {
     console.log('check handle challenge');
@@ -27,6 +30,7 @@ class Control extends Component {
       <div>
         {' '}
         <h2>DICE RESULTS</h2>
+        {console.log('check dice result')}
         <form onSubmit={this.handleSubmit}>
           <h3>Select your bid:</h3>
           <br />

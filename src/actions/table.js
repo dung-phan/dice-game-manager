@@ -29,7 +29,7 @@ export const loadTables = () => (dispatch, getState) => {
 };
 
 export const loadTable = id => dispatch => {
-  console.log('loading table')
+  console.log('loading table');
   superagent.get(`${baseUrl}/table/${id}`).then(response => {
     dispatch(fetchTableSuccess(response.body));
   });
@@ -46,8 +46,8 @@ export const joinTable = tableId => (dispatch, getState) => {
       dispatch(tableJoined(response.text));
     });
 };
-export const UPDATE_TABLE = 'UPDATE_TABLE'
-export const updateTable = (table) => ({
+export const UPDATE_TABLE = 'UPDATE_TABLE';
+export const updateTable = table => ({
   type: UPDATE_TABLE,
   payload: table
-})
+});
