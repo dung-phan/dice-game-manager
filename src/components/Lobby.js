@@ -21,7 +21,7 @@ class Lobby extends React.Component {
         <div className='item'>
           <ul className='ui middle aligned divided animated list'>
             {this.props.tables.map(table => (
-              <li class='item' key={table.id}>
+              <li className='item' key={table.id}>
                 <Link to={`/table/${table.id}`}>
                   {' '}
                   <h2>
