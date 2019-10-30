@@ -39,7 +39,7 @@ export const joinTable = tableId => (dispatch, getState) => {
   const token = getState().auth;
   console.log('get a token', token);
   superagent
-    .put(`${baseUrl}/table/${tableId}`)
+    .put(`${baseUrl}/table/${tableId}/join`)
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       console.log('response for join table', response);

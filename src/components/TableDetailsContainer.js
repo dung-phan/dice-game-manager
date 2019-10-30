@@ -2,7 +2,7 @@ import React from 'react';
 import TableDetails from './TableDetails';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { updateTable } from '../actions/table';
+import { updateTable, joinTable } from '../actions/table';
 import {baseUrl} from '../constants'
 
 class TableDetailsContainer extends React.Component {
@@ -18,8 +18,12 @@ class TableDetailsContainer extends React.Component {
       // this.setState({messages})
   }
   }
-  handleClick = () => {
+  handleClick = (event) => {
     console.log('check handle click');
+    console.log(this.props.match.params.id);
+    this.props.joinTable(this.props.match.params.id);
+    this.props.history.push(`/table/${this.props.match.params.id}/game`)
+    //this.props.joinTable
   };
   render() {
     console.log(this.props.table);
@@ -47,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { updateTable }
+  { updateTable, joinTable }
 )(TableDetailsContainer);
