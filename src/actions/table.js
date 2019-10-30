@@ -43,7 +43,7 @@ export const joinTable = tableId => (dispatch, getState) => {
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       console.log('response for join table', response);
-      dispatch(tableJoined(response.body));
+      dispatch(tableJoined(response.text));
     });
 };
 export const UPDATE_TABLE = 'UPDATE_TABLE'
