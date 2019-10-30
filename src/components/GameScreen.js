@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {baseUrl} from '../constants'
 import Streaming from './Streaming';
 import Control from './Control';
+import { gameStart } from '../actions/startgame';
+
 import {updateTable} from '../actions/table'
 
 class GameScreen extends React.Component {
@@ -31,10 +33,21 @@ class GameScreen extends React.Component {
           </div>
         </div>
         <div className='ui vertical divider'>
-          <button className='ui basic button'>Start game</button>
+
+
+          <button className='ui basic button' onClick={this.props.gameStart}>
+            Start game
+          </button>
         </div>
       </div>
     );
   }
 }
-export default connect(null, {updateTable})(GameScreen)
+
+
+
+export default connect(
+  null,
+  { gameStart, updateTable }
+)(GameScreen);
+
