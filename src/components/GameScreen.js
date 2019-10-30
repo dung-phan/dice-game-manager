@@ -35,7 +35,7 @@ class GameScreen extends React.Component {
         <div className='ui vertical divider'>
 
 
-          <button className='ui basic button' onClick={this.props.gameStart}>
+          <button className='ui basic button' onClick={()=>this.props.gameStart(this.props.match.params.id)}>
             Start game
           </button>
         </div>

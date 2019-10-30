@@ -5,7 +5,7 @@ export default (state = '', action = {}) => {
   console.log('check action', action);
   switch (action.type) {
     case USER_LOGIN:
-      return action.payload.jwt;
+      return action.payload.userId;
     default:
       return state;
   }
