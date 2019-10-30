@@ -29,6 +29,7 @@ export const loadTables = () => (dispatch, getState) => {
 };
 
 export const loadTable = id => dispatch => {
+  console.log('loading table')
   superagent.get(`${baseUrl}/table/${id}`).then(response => {
     dispatch(fetchTableSuccess(response.body));
   });
@@ -38,10 +39,15 @@ export const joinTable = tableId => (dispatch, getState) => {
   const token = getState().auth;
   console.log('get a token', token);
   superagent
-    .put(`${baseUrl}/table/${tableId}`)
+    .put(`${baseUrl}/table/${tableId}/join`)
     .set('Authorization', `Bearer ${token}`)
     .then(response => {
       console.log('response for join table', response);
       dispatch(tableJoined(response.body));
     });
 };
+export const UPDATE_TABLE = 'UPDATE_TABLE'
+export const updateTable = (table) => ({
+  type: UPDATE_TABLE,
+  payload: table
+})
