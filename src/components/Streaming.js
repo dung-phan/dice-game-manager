@@ -15,20 +15,17 @@ class Streaming extends React.Component {
   //     console.log(table)
   //   }
   // }
-  render() {
-    if (!this.props.table.id) return 'Loading ...';
-    const {
-      name,
-      status,
-      bidNumber,
-      bidDiceType,
-      diceRoll1,
-      diceRoll2,
-      turn,
-      player1,
-      player2,
-      winner
-    } = this.props.table;
+
+  render(){
+    const{
+      name, 
+      status, 
+      bidNumber, bidDiceType,
+      diceRoll1, diceRoll2,
+      turn, player1, player2, winner
+    } = this.props.table
+    if (!player1 || !player2) return 'missing player'
+
     return (
       <div>
         <h3>
@@ -43,11 +40,15 @@ class Streaming extends React.Component {
         <h5>Dice of type: {bidDiceType}</h5>
         <h3>Player 1 is {player1.email} </h3>
         <h3>Player 2 is {player2.email}</h3>
-        <h3>Now Is {turn.email}'s Turn!!!</h3>
-        <h3>
-          Make a bid or challenge{' '}
-          {player1.id === turn.id ? player2.email : player1.email}
-        </h3>
+
+        {
+          turn===null ? 'wating to start' : (<div>
+          <h3>Now Is {turn.email}'s Turn!!!</h3>
+          <h3>Make a bid or challenge {player1.id === turn.id ? player2.email : player1.email}</h3>
+          </div>)
+        }
+        
+
       </div>
     );
   }
