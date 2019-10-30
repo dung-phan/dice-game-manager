@@ -4,29 +4,41 @@ import {baseUrl} from '../constants'
 
 class Streaming extends React.Component {
   
-  source = new EventSource(`${baseUrl}/table/${this.props.table.id}`)
-  componentDidMount(){
-    
-  }
+  // source = new EventSource(`${baseUrl}/table/${this.props.match.params.id}`)
+  // componentDidMount(){
+  //   console.log('component Streaming did mount')
+  //   this.source.onmessage = event => {
+  //     console.log('got a event',event)
+
+  //     const table = JSON.parse(event.data)
+
+  //     this.props.updateTable(table)
+  //     console.log(table)
+  //   }
+  // }
   render(){
+    if (!this.props.table.id) return 'Loading ...'
     const{
       name, 
       status, 
       bidNumber, bidDiceType,
       diceRoll1, diceRoll2,
-      turnId, player1Id, player2Id, winnerId
+      turn, player1, player2, winner
     } = this.props.table
     return (
       <div>
+        <h3>Table: {name} is {status}</h3>
         <h4>
           CURRENT BID: 
           <br></br>
-          {`At least ${bidNumber} of Dice ${bidDiceType}`} 
+          {`At least ${bidNumber} of Dice ${bidDiceType} in there!`} 
         </h4>
-        <h5>Times:</h5>
-        <h5>Number of the dice:</h5>
-        <h3>Player 1 is </h3>
-        <h3>Player 2 is...</h3>
+        <h5>Times: {bidNumber}</h5>
+        <h5>Dice of type: {bidDiceType}</h5>
+        <h3>Player 1 is {player1.email} </h3>
+        <h3>Player 2 is {player2.email}</h3>
+        <h3>Now Is {turn.email}'s Turn!!!</h3>
+        <h3>Make a bid or challenge {player1.id === turn.id ? player2.email : player1.email}</h3>
       </div>
     );
   }
