@@ -4,55 +4,37 @@ export const START_GAME = 'START_GAME';
 export const PLAYER_BID = 'PLAYER_BID';
 export const PLAYER_CHALLENGE = 'PLAYER_CHALLENGE';
 export const LOGS_GAME_UPDATE = 'LOGS_GAME_UPDATE';
-const startGame = arrays => ({
-  type: 'START_GAME',
-  payload: arrays
-});
-const bid = currentBid => ({
-  type: 'PLAYER_BID',
-  payload: currentBid
-});
-const challenge = status => ({
-  type: 'PLAYER_BID',
-  payload: status
-});
 
-const logsGame = log => ({
-  type: 'LOGS_GAME_UPDATE',
-  payload: log
-});
-export const gameStart = () => dispatch => {
-  let diceRollOne = Array(6)
+export const gameStart = id => () => {
+  let diceRollOne = Array(5)
     .fill()
-    .map(() => Math.round(Math.random() * 6 + 1));
-  let diceRollTwo = Array(6)
+    .map(() => Math.round(Math.random() * 5 + 1))
+    .join('')
+    .toString();
+  let diceRollTwo = Array(5)
     .fill()
-    .map(() => Math.round(Math.random() * 6 + 1));
-  dispatch(startGame(diceRollOne, diceRollTwo));
-};
-
-export const bidPlayer = currentBid => dispatch => {
+    .map(() => Math.round(Math.random() * 5 + 1))
+    .join('')
+    .toString();
+  console.log('check if start game works');
   superagent
-    .post(`${baseUrl}/`)
-    .then(() => {
-      dispatch(bid(currentBid));
-    })
+    .put(`${baseUrl}/table/${id}/start`)
+    .send(diceRollOne, diceRollTwo)
+    .then(response => console.log('Check response', response.body))
     .catch(console.error);
 };
 
-export const challengePlayer = status => dispatch => {
+export const bidPlayer = (bidNumber, bidDiceType) => () => {
   superagent
-    .post(`${baseUrl}/`)
-    .then(() => {
-      dispatch(challenge(status));
-    })
+    .post(`${baseUrl}/table/1/bid`)
+    .send(bidNumber, bidDiceType)
+    .then(response => console.log('Check response', response.body))
     .catch(console.error);
 };
-export const logsUpdate = log => dispatch => {
+
+export const challengePlayer = () => () => {
   superagent
     .post(`${baseUrl}/`)
-    .then(() => {
-      dispatch(logsGame(log));
-    })
+    .then(() => {})
     .catch(console.error);
 };
