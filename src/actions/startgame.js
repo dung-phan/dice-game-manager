@@ -1,7 +1,7 @@
 import superagent from 'superagent';
-import {baseUrl} from '../constants'
+import { baseUrl } from '../constants';
 
-export const gameStart = (tableId) => () => {
+export const gameStart = tableId => () => {
   let diceRollOne = Array(5)
     .fill()
     .map(() => Math.round(Math.random() * 5 + 1))
@@ -19,8 +19,7 @@ export const gameStart = (tableId) => () => {
     .catch(console.error);
 };
 
-
-export const bidPlayer = (bidNumber, bidDiceType) => () => {
+export const bidPlayer = (tableId, bidNumber, bidDiceType) => () => {
   //console.log(typeof bidNumber);
 
   superagent
@@ -30,10 +29,10 @@ export const bidPlayer = (bidNumber, bidDiceType) => () => {
     .catch(console.error);
 };
 
-export const challengePlayer = finalWinner => () => {
+export const challengePlayer = (tableId, finalWinner) => () => {
   console.log('What is finalWinner in action', finalWinner);
   superagent
-    .put(`${baseUrl}/table/1/challenge`)
+    .put(`${baseUrl}/table/${tableId}/challenge`)
     .send({ winnerId: finalWinner })
     .then(() => console.log('Check what winner sent', finalWinner))
     .catch(console.error);
