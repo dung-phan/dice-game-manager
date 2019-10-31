@@ -5,7 +5,7 @@ export const TABLES_FETCHED = 'TABLES_FETCHED';
 export const FETCH_TABLE_SUCCESS = 'FETCH_TABLE_SUCCESS';
 export const TABLE_JOINED = 'TABLE_JOINED';
 
-const tablesFetched = tables => ({
+export const tablesFetched = tables => ({
   type: TABLES_FETCHED,
   payload: tables
 });

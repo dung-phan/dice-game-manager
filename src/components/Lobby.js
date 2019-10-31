@@ -1,11 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadTables, joinTable } from '../actions/table';
+import { loadTables, joinTable, tablesFetched } from '../actions/table';
+import {baseUrl} from '../constants'
 
 class Lobby extends React.Component {
+  source = new EventSource(`${baseUrl}/lobby`)
   componentDidMount() {
-    this.props.loadTables();
+    console.log('Lobby did mount')
+    console.log('source',this.source)
+    this.source.onmessage = event => {
+      console.log('got an event', event)
+      const tables = JSON.parse(event.data)
+      console.log('find tables', tables)
+      this.props.tablesFetched(tables)
+    }
   }
   onClick = event => {
     console.log(event.target.name);
@@ -42,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadTables, joinTable }
+  { loadTables, joinTable, tablesFetched }
 )(Lobby);

@@ -7,7 +7,7 @@ export default (state = initialState, action = {}) => {
   console.log('check action', action);
   switch (action.type) {
     case USER_LOGIN:
-      localStorage.setItem("jwt", action.payload.jwt);
+      // localStorage.setItem("jwt", action.payload.jwt);
       return action.payload.jwt;
     default:
       return state;

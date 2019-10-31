@@ -39,7 +39,8 @@ class Streaming extends React.Component {
         }
 
         {
-          status==='done' ? <h3>Winner is {winner.email} !</h3> : null
+
+          status==='done' && !!winner ? <h3>Winner is {winner.email} !</h3> : null
         }
 
       </div>
