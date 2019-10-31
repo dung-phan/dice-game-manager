@@ -20,17 +20,19 @@ export const gameStart = () => () => {
 };
 
 export const bidPlayer = (bidNumber, bidDiceType) => () => {
-  console.log(typeof bidNumber);
+  //console.log(typeof bidNumber);
   superagent
     .put(`${baseUrl}/table/1/bid`)
     .send({ bidNumber: Number(bidNumber), bidDiceType: bidDiceType })
-    .then(response => console.log('Check what i sent', bidNumber, bidDiceType))
+    .then(() => console.log('Check what i sent', bidNumber, bidDiceType))
     .catch(console.error);
 };
 
-export const challengePlayer = () => () => {
+export const challengePlayer = finalWinner => () => {
+  console.log('What is finalWinner in action', finalWinner);
   superagent
-    .post(`${baseUrl}/`)
-    .then(() => {})
+    .put(`${baseUrl}/table/1/challenge`)
+    .send({ winnerId: finalWinner })
+    .then(() => console.log('Check what winner sent', finalWinner))
     .catch(console.error);
 };

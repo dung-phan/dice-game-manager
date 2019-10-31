@@ -23,14 +23,30 @@ class Control extends Component {
     this.props.bidPlayer(this.state.bidNumber, this.state.bidDiceType);
   };
   handleChallenge = () => {
-    console.log('check handle challenge');
+    let finalWinner;
+    console.log('check the current state', this.state);
+    const { bidNumber, bidDiceType } = this.state;
+    const { roll1, roll2, turnId, player1Id, player2Id } = this.props;
+    const arrayDice = roll1.concat(roll2).split('');
+    console.log('check array dice', arrayDice); //print out array of number in string type
+    if (
+      arrayDice.includes(bidDiceType) &&
+      arrayDice.filter(numb => numb === bidNumber).length <= bidNumber
+    ) {
+      finalWinner = turnId;
+      this.props.challengePlayer(finalWinner);
+    } else {
+      if (turnId !== player1Id) {
+        finalWinner = player2Id;
+        this.props.challengePlayer(finalWinner);
+      }
+    }
   };
   render() {
     return (
       <div>
         {' '}
         <h2>DICE RESULTS</h2>
-        {console.log('check dice result')}
         <form onSubmit={this.handleSubmit}>
           <h3>Select your bid:</h3>
           <br />
