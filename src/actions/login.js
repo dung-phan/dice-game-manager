@@ -2,9 +2,9 @@ import superagent from 'superagent';
 
 export const USER_LOGIN = 'USER_LOGIN';
 
-const userLogIn = jwt => ({
+const userLogIn = (userId, jwt) => ({
   type: USER_LOGIN,
-  payload: jwt
+  payload: {userId, jwt}
 });
 const baseUrl = 'http://localhost:4000';
 export const login = (email, password) => dispatch => {
@@ -14,7 +14,8 @@ export const login = (email, password) => dispatch => {
     .send({ email, password })
     .then(response => {
       console.log('check the response', response);
-      dispatch(userLogIn(response.body.jwt));
+      const {userId, jwt} = response.body
+      dispatch(userLogIn(userId, jwt));
     })
     .catch(console.error);
 };
