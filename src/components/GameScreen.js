@@ -35,16 +35,15 @@ class GameScreen extends React.Component {
               turnId={this.props.table.turnId}
               player1Id={this.props.table.player1Id}
               player2Id={this.props.table.player2Id}
+              tableId={this.props.table.id}
             />
           </div>
         </div>
         <div className='ui vertical divider'>
-
-
-
-
-          <button className='ui basic button' onClick={()=>this.props.gameStart(this.props.match.params.id)}>
-
+          <button
+            className='ui basic button'
+            onClick={() => this.props.gameStart(this.props.match.params.id)}
+          >
             Start game
           </button>
         </div>

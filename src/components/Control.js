@@ -20,15 +20,15 @@ class Control extends Component {
     event.preventDefault();
     console.log('check handle bid');
     console.log('check state in handle submit', this.state);
-    const {bidNumber,bidDiceType} = this.state
-    const tableId = this.props.table.id
-    this.props.bidPlayer(tableId,bidNumber, bidDiceType);
+    const { bidNumber, bidDiceType } = this.state;
+    const tableId = this.props.table.id;
+    this.props.bidPlayer(tableId, bidNumber, bidDiceType);
   };
   handleChallenge = () => {
     let finalWinner;
     console.log('check the current state', this.state);
     const { bidNumber, bidDiceType } = this.state;
-    const { roll1, roll2, turnId, player1Id, player2Id } = this.props;
+    const { roll1, roll2, turnId, player1Id, player2Id, tableId } = this.props;
     const arrayDice = roll1.concat(roll2).split('');
     console.log('check array dice', arrayDice); //print out array of number in string type
     if (
@@ -36,22 +36,26 @@ class Control extends Component {
       arrayDice.filter(numb => numb === bidNumber).length <= bidNumber
     ) {
       finalWinner = turnId;
-      this.props.challengePlayer(finalWinner);
+      this.props.challengePlayer(tableId, finalWinner);
     } else {
       if (turnId !== player1Id) {
         finalWinner = player2Id;
-        this.props.challengePlayer(finalWinner);
+        this.props.challengePlayer(tableId, finalWinner);
       }
     }
   };
   render() {
-    const {userId, table: {player1Id, player2Id, diceRoll1, diceRoll2}} = this.props
+    const {
+      userId,
+      table: { player1Id, player2Id, diceRoll1, diceRoll2 }
+    } = this.props;
     return (
       <div>
-
-
-        {!player1Id || !player2Id ? 'Loading'
-        : (<h2>{userId === player1Id ? 'Player 1' : 'Player 2'}</h2>)}
+        {!player1Id || !player2Id ? (
+          'Loading'
+        ) : (
+          <h2>{userId === player1Id ? 'Player 1' : 'Player 2'}</h2>
+        )}
         <h2>DICE RESULTS : {userId === player1Id ? diceRoll1 : diceRoll2}</h2>
         {console.log('check dice result')}
 
@@ -98,10 +102,10 @@ class Control extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   userId: state.userId,
   table: state.table
-})
+});
 export default connect(
   mapStateToProps,
   { bidPlayer, challengePlayer }
