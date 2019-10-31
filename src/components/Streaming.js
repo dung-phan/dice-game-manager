@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
 class Streaming extends React.Component {
+
+
 
   render(){
     const{
@@ -11,6 +14,7 @@ class Streaming extends React.Component {
       turn, player1, player2, winner
     } = this.props.table
     if (!player1 || !player2) return 'missing player'
+
 
     return (
       <div>
@@ -37,7 +41,6 @@ class Streaming extends React.Component {
         {
           status==='done' ? <h3>Winner is {winner.email} !</h3> : null
         }
-        
 
       </div>
     );
