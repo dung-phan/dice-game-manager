@@ -1,1 +1,1 @@
-export const baseUrl = 'https://guarded-plains-37230.herokuapp.com/';
+export const baseUrl = 'http://localhost:4000';
