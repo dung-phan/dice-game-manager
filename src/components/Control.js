@@ -49,6 +49,12 @@ class Control extends Component {
       userId,
       table: { player1Id, player2Id, diceRoll1, diceRoll2 }
     } = this.props;
+    const diceDisplay1 = diceRoll1
+      ? diceRoll1.split('').join('   ')
+      : diceRoll1;
+    const diceDisplay2 = diceRoll2
+      ? diceRoll2.split('').join('   ')
+      : diceRoll2;
     return (
       <div>
         {!player1Id || !player2Id ? (
@@ -56,8 +62,10 @@ class Control extends Component {
         ) : (
           <h2>{userId === player1Id ? 'Player 1' : 'Player 2'}</h2>
         )}
-        <h2>DICE RESULTS : {userId === player1Id ? diceRoll1 : diceRoll2}</h2>
-        {console.log('check dice result')}
+
+        <h2>
+          DICE RESULTS : {userId === player1Id ? diceDisplay1 : diceDisplay2}
+        </h2>
 
         <form onSubmit={this.handleSubmit}>
           <h3>Select your bid:</h3>
@@ -65,6 +73,7 @@ class Control extends Component {
           <label>
             Times:
             <select value={this.state.value} onChange={this.handleChange}>
+              <option value=''> {'-- select --'}</option>
               <option value='1'>1</option>
               <option value='2'>2</option>
               <option value='3'>3</option>
@@ -81,6 +90,7 @@ class Control extends Component {
             <br />
             Number on the dice:
             <select value={this.state.value} onChange={this.handleOtherChange}>
+              <option value=''> {'-- select --'}</option>
               <option value='1'>1</option>
               <option value='2'>2</option>
               <option value='3'>3</option>
