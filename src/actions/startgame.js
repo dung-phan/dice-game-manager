@@ -20,7 +20,7 @@ export const gameStart = (tableId) => () => {
 };
 
 
-export const bidPlayer = (bidNumber, bidDiceType) => () => {
+export const bidPlayer = (tableId, bidNumber, bidDiceType) => () => {
   //console.log(typeof bidNumber);
 
   superagent
