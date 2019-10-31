@@ -20,7 +20,9 @@ class Control extends Component {
     event.preventDefault();
     console.log('check handle bid');
     console.log('check state in handle submit', this.state);
-    this.props.bidPlayer(this.state.bidNumber, this.state.bidDiceType);
+    const {bidNumber,bidDiceType} = this.state
+    const tableId = this.props.table.id
+    this.props.bidPlayer(tableId,bidNumber, bidDiceType);
   };
   handleChallenge = () => {
     let finalWinner;
@@ -43,10 +45,16 @@ class Control extends Component {
     }
   };
   render() {
+    const {userId, table: {player1Id, player2Id, diceRoll1, diceRoll2}} = this.props
     return (
       <div>
-        {' '}
-        <h2>DICE RESULTS</h2>
+
+
+        {!player1Id || !player2Id ? 'Loading'
+        : (<h2>{userId === player1Id ? 'Player 1' : 'Player 2'}</h2>)}
+        <h2>DICE RESULTS : {userId === player1Id ? diceRoll1 : diceRoll2}</h2>
+        {console.log('check dice result')}
+
         <form onSubmit={this.handleSubmit}>
           <h3>Select your bid:</h3>
           <br />
@@ -90,8 +98,11 @@ class Control extends Component {
     );
   }
 }
-
+const mapStateToProps = (state) => ({
+  userId: state.userId,
+  table: state.table
+})
 export default connect(
-  null,
+  mapStateToProps,
   { bidPlayer, challengePlayer }
 )(Control);
