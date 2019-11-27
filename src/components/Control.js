@@ -55,16 +55,18 @@ class Control extends Component {
     const diceDisplay2 = diceRoll2
       ? diceRoll2.split('').join('   ')
       : diceRoll2;
+    console.log('player1',player1Id,'user',userId)
+    console.log('user is player1',Number(userId) === Number(player1Id))
     return (
       <div>
         {!player1Id || !player2Id ? (
-          'Loading'
+          'Waiting for both player to join'
         ) : (
-          <h2>{userId === player1Id ? 'Player 1' : 'Player 2'}</h2>
+          <h2>{Number(userId) === Number(player1Id) ? 'Player 1' : 'Player 2'}</h2>
         )}
 
         <h2>
-          DICE RESULTS : {userId === player1Id ? diceDisplay1 : diceDisplay2}
+          DICE RESULTS : {Number(userId) === Number(player1Id) ? diceDisplay1 : diceDisplay2}
         </h2>
 
         <form onSubmit={this.handleSubmit}>
