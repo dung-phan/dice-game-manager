@@ -30,9 +30,9 @@ export default function NavBar() {
             </a>
           </li>
           <li className="navigation__item">
-            <a href="" className="navigation__link">
-              Join table
-            </a>
+            <Link className="navigation__link" to="/lobby">
+              Join a table
+            </Link>
           </li>
           <li className="navigation__item">
             <Link className="navigation__link" to="/contact">

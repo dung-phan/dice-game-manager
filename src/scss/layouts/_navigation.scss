@@ -8,8 +8,8 @@
     height: 5rem;
     width: 5rem;
     position: fixed;
-    top: 5rem;
-    left: 30rem;
+    top: 2rem;
+    left: 31rem;
     border-radius: 10%;
     z-index: 2000;
     box-shadow: 0 0.1rem 1rem rgba(48, 46, 46, 0.514);
@@ -20,8 +20,8 @@
     height: 4rem;
     width: 4rem;
     position: fixed;
-    top: 5.5rem;
-    left: 30.5rem;
+    top: 2.5rem;
+    left: 31.5rem;
     background-image: radial-gradient(
       rgba(66, 57, 170, 0.9),
       rgba(66, 57, 170, 0.9)
@@ -31,7 +31,7 @@
     border-radius: 10%;
   }
   &__nav {
-    height: 80vh;
+    height: 65vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translate(-80%, -60%);
+    transform: translate(-80%, -40%);
     list-style: none;
     text-align: center;
     text-transform: uppercase;
@@ -80,7 +80,7 @@
   }
   //CHANGE
   &__checkbox:checked ~ &__background {
-    transform: scale(15);
+    transform: scale(22);
   }
   &__checkbox:checked ~ &__nav {
     opacity: 1;
