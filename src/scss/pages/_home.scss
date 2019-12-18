@@ -1,0 +1,39 @@
+.section-home {
+  padding: 10rem 15rem;
+  height: 100vh;
+  background-color: rgb(38, 34, 78);
+  background-size: cover;
+  width: 100%;
+}
+.frame {
+  @include absoluteCenter;
+
+  background-color: rgba(66, 57, 170, 0.616);
+  height: 50rem;
+  border-radius: 20px;
+  display: table;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  width: 75%;
+
+  &__left {
+    width: 40%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1rem 5rem;
+  }
+  &__right {
+    width: 60%;
+    display: table-cell;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+
+    &--box {
+      background-image: url(https://cdn.dribbble.com/users/1728242/screenshots/4086288/travel_dice_drib.jpg);
+      background-size: cover;
+      background-position: center;
+      height: 50rem;
+      border-radius: 20px;
+      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    }
+  }
+}

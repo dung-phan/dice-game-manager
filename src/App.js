@@ -7,17 +7,17 @@ import Login from './components/Login';
 import Lobby from './components/Lobby';
 import GameScreen from './components/GameScreen';
 import TableDetailsContainer from './components/TableDetailsContainer';
-import './App.css';
+import './scss/main.scss';
 function App() {
   return (
     <div>
-      <Route path='/' exact component={Home} />
-      <Route path='/signup' exact component={SignUp} />
-      <Route path='/login' exact component={Login} />
-      <Route path='/lobby' exact component={Lobby} />
-      <Route path='/table/:id/game' exact component={GameScreen} />
+      <Route path="/" exact component={Home} />
+      <Route path="/signup" exact component={SignUp} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/lobby" exact component={Lobby} />
+      <Route path="/table/:id/game" exact component={GameScreen} />
 
-      <Route path='/table/:id' exact component={TableDetailsContainer} />
+      <Route path="/table/:id" exact component={TableDetailsContainer} />
     </div>
   );
 }
