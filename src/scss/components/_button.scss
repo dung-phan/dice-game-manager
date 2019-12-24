@@ -1,61 +1,34 @@
-.btn {
-  &,
-  &:link,
-  &:visited {
-    padding: 12px 30px;
-    display: inline-block;
-    border-radius: 100px;
-    transition: all 0.2s;
-    position: relative;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: rgb(206, 206, 206);
-  }
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px (rgba(148, 148, 148, 0.2));
-    &::after {
-      transform: scaleX(1.4) scaleY(1.6);
-      opacity: 0;
-    }
-  }
-  &:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px (rgba(148, 148, 148, 0.2));
-  }
-  &-main {
-    background-color: transparent;
-    border: 0.5px solid rgb(202, 202, 202);
-
-    &::after {
-      background-color: transparent;
-      border: 0.5px solid rgb(201, 201, 201);
-    }
-  }
-
-  &::after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 100px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all 0.4s;
-  }
-  &-animated {
-    animation: moveInBottom 0.7s ease-out 2s;
-    animation-fill-mode: backwards;
-  }
+.btn:link,
+.btn:visited {
+  display: inline-block;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .btn-card {
+  text-transform: uppercase;
   background-color: transparent;
-  border: 0.5px solid rgb(38, 34, 78);
-  color: rgb(38, 34, 78);
-  padding: 12px 30px;
-  position: relative;
-  top: 0;
-  left: 13rem;
+  padding: 1.5rem 4rem;
+  border: 0.6px solid $color-primary;
+  border-radius: 100px;
+  transition: all 0.2s;
+  float: right;
+  margin: 0 0.6rem;
+  outline: none;
+}
+.btn-game {
+  text-transform: uppercase;
+  background-color: transparent;
+  padding: 1.5rem 4rem;
+  border: 0.6px solid rgb(197, 197, 197);
+  border-radius: 100px;
+  transition: all 0.2s;
+  float: right;
+  margin: 0 0.6rem;
+  outline: none;
 }

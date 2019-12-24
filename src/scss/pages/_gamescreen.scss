@@ -1,0 +1,65 @@
+.section-result {
+  height: 10vh;
+  border-radius: 30px;
+  width: 100%;
+  display: table;
+  vertical-align: middle;
+}
+.section-bid {
+  height: 40vh;
+  width: 100%;
+  display: table;
+  margin: 1rem 0;
+}
+
+.frame-board {
+  @include absoluteCenter;
+
+  background: linear-gradient(to right bottom, #5b7adf, #b27eb4);
+  height: 50rem;
+  border-radius: 20px;
+  display: table;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  width: 75%;
+  &__left--1 {
+    width: 60%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1rem 5rem;
+  }
+  &__right--2 {
+    width: 35%;
+    display: table-cell;
+    padding: 1rem 1rem;
+    vertical-align: middle;
+  }
+
+  &__right--box2 {
+    background-color: rgba(66, 57, 170, 0.103);
+    height: 50rem;
+    border-radius: 50px;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.568);
+    padding: 2rem;
+    width: 95%;
+  }
+  &__right--sub-box1 {
+    height: 10rem;
+    padding: 2rem;
+  }
+  &__right--sub-box2 {
+    background-color: rgba(66, 57, 170, 0.616);
+    height: 35rem;
+    border-radius: 30px;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  &__right--update1 {
+    height: 13rem;
+    background: transparent;
+    padding: 1.5rem;
+    border-radius: 20px;
+    margin: 0.5rem;
+  }
+}

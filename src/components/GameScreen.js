@@ -4,48 +4,45 @@ import { baseUrl } from '../constants';
 import Streaming from './Streaming';
 import Control from './Control';
 import { gameStart } from '../actions/startgame';
-
 import { updateTable } from '../actions/table';
 
 class GameScreen extends React.Component {
   source = new EventSource(`${baseUrl}/table/${this.props.match.params.id}`);
   componentDidMount() {
-    console.log('component GameScreen did mount');
     this.source.onmessage = event => {
       console.log('got a event', event);
 
       const table = JSON.parse(event.data);
 
       this.props.updateTable(table);
-      console.log('check table', table.diceRoll1);
     };
   }
   render() {
     return (
-      <div>
-        <div className='ui two column very relaxed grid'>
-          {console.log('check props table', this.props.table)}
-          <div className='column'>
-            <Streaming />
+      <div className="section-home">
+        <div className="row">
+          <div className="frame-board">
+            <div className="frame-board__left--1">
+              <Control
+                roll1={this.props.table.diceRoll1}
+                roll2={this.props.table.diceRoll2}
+                turnId={this.props.table.turnId}
+                player1Id={this.props.table.player1Id}
+                player2Id={this.props.table.player2Id}
+                tableId={this.props.table.id}
+              />
+            </div>
+            <div className="frame-board__right--2">
+              <div className="frame-board__right--box2">
+                <div className="frame-board__right--sub-box1">
+                  <h3>Stats</h3>
+                </div>
+                <div className="frame-board__right--sub-box2">
+                  <Streaming />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className='column'>
-            <Control
-              roll1={this.props.table.diceRoll1}
-              roll2={this.props.table.diceRoll2}
-              turnId={this.props.table.turnId}
-              player1Id={this.props.table.player1Id}
-              player2Id={this.props.table.player2Id}
-              tableId={this.props.table.id}
-            />
-          </div>
-        </div>
-        <div className='ui vertical divider'>
-          <button
-            className='ui basic button'
-            onClick={() => this.props.gameStart(this.props.match.params.id)}
-          >
-            Start game
-          </button>
         </div>
       </div>
     );
@@ -54,7 +51,4 @@ class GameScreen extends React.Component {
 const mapStateToProps = state => ({
   table: state.table
 });
-export default connect(
-  mapStateToProps,
-  { gameStart, updateTable }
-)(GameScreen);
+export default connect(mapStateToProps, { gameStart, updateTable })(GameScreen);

@@ -1,30 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
-function Home(props) {
+import { Link } from 'react-router-dom';
+
+function Home() {
   return (
     <div className="section-home">
       <div className="row">
         <div className="frame">
           <div className="frame__left">
-            <Navigation />
             <div className="heading__secondary">Dice</div>
             <div className="heading__secondary"> Game</div>
-            <p>
+            <h4 style={{ margin: '2rem 0' }}>
               Have fun rolling dices with friends, go into a new world and take
               risks together.
-            </p>
-            <br></br>
-            <button className="btn btn-main btn-animated">
-              Join <i className="icon ion-md-person-add"></i>
-            </button>
+            </h4>
+            <Link
+              className="btn btn-game"
+              style={{ width: '45%', textDecoration: 'none' }}
+              to="/account"
+            >
+              <h4>
+                Join <i className="icon ion-md-person-add"></i>
+              </h4>
+            </Link>
           </div>
           <div className="frame__right">
             <div className="frame__right--box"></div>
           </div>
         </div>
       </div>
+      <Navigation />
     </div>
   );
 }
