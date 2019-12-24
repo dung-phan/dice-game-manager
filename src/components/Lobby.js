@@ -1,19 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Navigation from './Navigation';
-import { Link } from 'react-router-dom';
 import { loadTables, joinTable } from '../actions/table';
+import Navigation from './Navigation';
+import { baseUrl } from '../constants';
 
 class Lobby extends React.Component {
   componentDidMount() {
     this.props.loadTables();
   }
-  onClick = event => {
-    console.log(event.target.name);
-    this.props.joinTable(event.target.name);
-    //joinTable()
-    // create action joinTable()
-    //sent a put request to /table/:id
+
+  handleClick = id => {
+    console.log('check handle click');
+    console.log('what is id', id);
+
+    this.props.joinTable(id);
+
+    this.props.history.push(`/table/${id}/game`);
   };
   render() {
     if (!this.props.tables) return 'Loading...';
@@ -22,17 +24,20 @@ class Lobby extends React.Component {
         <div className="row">
           <div className="frame">
             <div className="frame__left">
-              <Navigation />
               <div>
                 <ul>
                   {this.props.tables.map(table => (
-                    <div className="card">
-                      <li key={table.id}>
-                        <Link className="link" to={`/table/${table.id}`}>
-                          <div className="heading-sub">{table.name}</div>
-                          <h5>Status: {table.status}</h5>
-                          <button className="btn btn-card">Join</button>
-                        </Link>
+                    <div className="card" key={table.id}>
+                      <li>
+                        <div className="heading-sub">{table.name}</div>
+                        <h5>Status: {table.status}</h5>
+                        <button
+                          className="btn btn-card"
+                          onClick={() => this.handleClick(table.id)}
+                          style={{ left: '12rem' }}
+                        >
+                          Join
+                        </button>
                       </li>
                     </div>
                   ))}
@@ -45,6 +50,7 @@ class Lobby extends React.Component {
             </div>
           </div>
         </div>
+        <Navigation />
       </div>
     );
   }
@@ -54,9 +60,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { loadTables, joinTable })(Lobby);
-{
-  /* 
-          
-        </div>
-      </div> */
-}

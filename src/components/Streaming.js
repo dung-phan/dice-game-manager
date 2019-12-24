@@ -1,48 +1,57 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
 class Streaming extends React.Component {
+  render() {
+    console.log('what is in table', this.props.table);
+    const {
+      name,
+      status,
+      bidNumber,
+      bidDiceType,
+      turn,
+      player1,
+      player2,
+      winner
+    } = this.props.table;
 
-
-
-  render(){
-    const{
-      name, 
-      status, 
-      bidNumber, bidDiceType,
-      turn, player1, player2, winner
-    } = this.props.table
-    if (!player1 || !player2) return 'missing player'
-
-
-    return (
+    return player1 || player2 ? (
       <div>
-        <h3>
-          Table: {name} is {status}
-        </h3>
-        <h4>
-          CURRENT BID:
-          <br></br>
-          {`At least ${bidNumber} of Dice ${bidDiceType} in there!`}
-        </h4>
-        <h5>Times: {bidNumber}</h5>
-        <h5>Dice of type: {bidDiceType}</h5>
-        <h3>Player 1 is {player1.email} </h3>
-        <h3>Player 2 is {player2.email}</h3>
+        <div className="text-update">
+          Table {name} is {status}
+        </div>
+        <div className="frame-board__right--update1">
+          <div className="row">
+            <div className="col-1-of-2">
+              <h4 style={{ textAlign: 'center' }}>Times </h4>
+              <h3>{bidNumber}</h3>
+            </div>
 
-        {
-          turn===null ? 'wating to start' : (<div>
-          <h3>Now Is {turn.email}'s Turn!!!</h3>
-          <h3>Make a bid or challenge {player1.id === turn.id ? player2.email : player1.email}</h3>
-          </div>)
-        }
-
-        {
-          status==='done' ? <h3>Winner is {winner.email} !</h3> : null
-        }
-
+            <div className="col-1-of-2">
+              <h4 style={{ textAlign: 'center' }}>Number</h4>
+              <h3>{bidDiceType}</h3>
+            </div>
+          </div>
+        </div>
+        {player1 ? (
+          <h4>Player 1 is {player1.name}</h4>
+        ) : (
+          <h4>Waiting for Player 1</h4>
+        )}
+        {player2 ? (
+          <h4>Player 2 is {player2.name}</h4>
+        ) : (
+          <h4>Waiting for Player 2</h4>
+        )}
+        {turn === null ? null : (
+          <div>
+            <h4>It is {turn.name}'s turn now to make a bid or challenge!!!</h4>
+          </div>
+        )}
+        {/* {status === 'done' ? <h3>Winner is {winner.email} !</h3> : null} */}
       </div>
+    ) : (
+      'Loading'
     );
   }
 }

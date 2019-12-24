@@ -7,7 +7,7 @@ body {
   font-weight: 400;
   font-size: 15px;
   line-height: 1.7;
-  color: rgb(199, 199, 199);
+  color: rgb(230, 228, 228);
 }
 
 .heading__secondary {
@@ -20,6 +20,12 @@ body {
 p {
   padding-top: 1rem;
 }
+h3 {
+  color: rgb(230, 228, 228);
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  text-align: center;
+}
 
 ul {
   list-style: none;
@@ -27,18 +33,46 @@ ul {
 
 .link {
   text-decoration: none;
-  color: rgb(38, 34, 78);
+  color: $color-primary;
+}
+.link:hover {
+  color: rgb(142, 142, 252);
 }
 .heading-sub {
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 1.5rem;
-  padding: 0.7rem 3rem;
+  letter-spacing: 1.3px;
+  font-size: 2rem;
+  padding: 0.5rem 3rem;
+  color: $color-primary;
 }
 h5 {
   font-weight: 600;
   letter-spacing: -0.5px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   padding: 0 3rem;
+  color: $color-primary;
+}
+
+h4 {
+  color: rgba(228, 228, 228, 0.945);
+  font-size: 1.8rem;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+}
+
+.text-update {
+  font-size: 2.1rem;
+  letter-spacing: 0.2rem;
+  color: rgb(231, 230, 230);
+  font-weight: 500;
+}
+.text-update2 {
+  color: rgb(233, 232, 232);
+  font-size: 2.1rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+h1 {
+  font-size: 4.5rem;
 }

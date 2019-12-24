@@ -37,14 +37,14 @@ export const loadTable = id => dispatch => {
 
 export const joinTable = tableId => (dispatch, getState) => {
   const token = getState().auth;
-  console.log('get a token', token);
   superagent
     .put(`${baseUrl}/table/${tableId}/join`)
     .set('Authorization', `Bearer ${token}`)
-    .then(response => {
-      console.log('response for join table', response);
-      dispatch(tableJoined(response.text));
-    });
+    // .then(response => {
+    //   dispatch(tableJoined(response.text));
+    //   console.log('response for join table', response);
+    // })
+    .catch(console.error);
 };
 export const UPDATE_TABLE = 'UPDATE_TABLE';
 export const updateTable = table => ({
