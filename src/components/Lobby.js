@@ -2,19 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadTables, joinTable } from '../actions/table';
 import Navigation from './Navigation';
-import { baseUrl } from '../constants';
 
 class Lobby extends React.Component {
   componentDidMount() {
     this.props.loadTables();
   }
-
   handleClick = id => {
-    console.log('check handle click');
-    console.log('what is id', id);
-
     this.props.joinTable(id);
-
     this.props.history.push(`/table/${id}/game`);
   };
   render() {

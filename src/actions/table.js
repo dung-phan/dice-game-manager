@@ -13,19 +13,15 @@ const fetchTableSuccess = table => ({
   type: FETCH_TABLE_SUCCESS,
   payload: table
 });
-const tableJoined = table => ({
-  type: TABLE_JOINED,
-  payload: table
-});
 
 export const loadTables = () => (dispatch, getState) => {
   if (getState().tables.length !== 0) return "Loading...";
 
   superagent(`${baseUrl}/lobby`)
     .then(response => {
-      dispatch(tablesFetched(response.body)); // check redux devtools if action got dispatched
+      dispatch(tablesFetched(response.body));
     })
-    .catch(console.error); // if you don't console response, check the console for errors
+    .catch(console.error);
 };
 
 export const loadTable = id => dispatch => {
@@ -40,10 +36,6 @@ export const joinTable = tableId => (dispatch, getState) => {
   superagent
     .put(`${baseUrl}/table/${tableId}/join`)
     .set("Authorization", `Bearer ${token}`)
-    // .then(response => {
-    //   dispatch(tableJoined(response.text));
-    //   console.log('response for join table', response);
-    // })
     .catch(console.error);
 };
 export const UPDATE_TABLE = "UPDATE_TABLE";
