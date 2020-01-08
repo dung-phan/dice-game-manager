@@ -1,16 +1,17 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { baseUrl } from '../constants';
-import Streaming from './Streaming';
-import Control from './Control';
-import { gameStart } from '../actions/startgame';
-import { updateTable } from '../actions/table';
+import React from "react";
+import { connect } from "react-redux";
+import { baseUrl } from "../constants";
+import Streaming from "./Streaming";
+import Control from "./Control";
+import Navigation from "./Navigation";
+import { gameStart } from "../actions/startgame";
+import { updateTable } from "../actions/table";
 
 class GameScreen extends React.Component {
   source = new EventSource(`${baseUrl}/table/${this.props.match.params.id}`);
   componentDidMount() {
     this.source.onmessage = event => {
-      console.log('got a event', event);
+      console.log("got a event", event);
 
       const table = JSON.parse(event.data);
 
@@ -44,6 +45,7 @@ class GameScreen extends React.Component {
             </div>
           </div>
         </div>
+        <Navigation />
       </div>
     );
   }
