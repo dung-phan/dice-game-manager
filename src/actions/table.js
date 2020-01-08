@@ -1,9 +1,9 @@
-import superagent from 'superagent';
-const baseUrl = 'http://localhost:4000';
+import superagent from "superagent";
+const baseUrl = "http://localhost:4000";
 
-export const TABLES_FETCHED = 'TABLES_FETCHED';
-export const FETCH_TABLE_SUCCESS = 'FETCH_TABLE_SUCCESS';
-export const TABLE_JOINED = 'TABLE_JOINED';
+export const TABLES_FETCHED = "TABLES_FETCHED";
+export const FETCH_TABLE_SUCCESS = "FETCH_TABLE_SUCCESS";
+export const TABLE_JOINED = "TABLE_JOINED";
 
 const tablesFetched = tables => ({
   type: TABLES_FETCHED,
@@ -19,7 +19,7 @@ const tableJoined = table => ({
 });
 
 export const loadTables = () => (dispatch, getState) => {
-  if (getState().tables.length !== 0) return 'Loading...';
+  if (getState().tables.length !== 0) return "Loading...";
 
   superagent(`${baseUrl}/lobby`)
     .then(response => {
@@ -29,7 +29,7 @@ export const loadTables = () => (dispatch, getState) => {
 };
 
 export const loadTable = id => dispatch => {
-  console.log('loading table');
+  console.log("loading table");
   superagent.get(`${baseUrl}/table/${id}`).then(response => {
     dispatch(fetchTableSuccess(response.body));
   });
@@ -39,14 +39,14 @@ export const joinTable = tableId => (dispatch, getState) => {
   const token = getState().auth;
   superagent
     .put(`${baseUrl}/table/${tableId}/join`)
-    .set('Authorization', `Bearer ${token}`)
+    .set("Authorization", `Bearer ${token}`)
     // .then(response => {
     //   dispatch(tableJoined(response.text));
     //   console.log('response for join table', response);
     // })
     .catch(console.error);
 };
-export const UPDATE_TABLE = 'UPDATE_TABLE';
+export const UPDATE_TABLE = "UPDATE_TABLE";
 export const updateTable = table => ({
   type: UPDATE_TABLE,
   payload: table

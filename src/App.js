@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import Home from './components/Home';
-import Lobby from './components/Lobby';
-import GameScreen from './components/GameScreen';
-import Account from './components/Account';
-import './scss/main.scss';
+import React from "react";
+import { connect } from "react-redux";
+import { Route } from "react-router-dom";
+import Home from "./components/Home";
+import Lobby from "./components/Lobby";
+import GameScreen from "./components/GameScreen";
+import Account from "./components/Account";
+import "./scss/main.scss";
 function App() {
   return (
     <div>
@@ -18,9 +18,9 @@ function App() {
 }
 
 const MapStateToProps = state => {
-  console.log('Check the state in App', state);
+  console.log("Check the state in App", state);
   return {
-    loggedIn: state.auth !== ''
+    loggedIn: state.auth !== ""
   };
 };
 export default connect(MapStateToProps)(App);
