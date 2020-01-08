@@ -11,10 +11,7 @@ class GameScreen extends React.Component {
   source = new EventSource(`${baseUrl}/table/${this.props.match.params.id}`);
   componentDidMount() {
     this.source.onmessage = event => {
-      console.log("got a event", event);
-
       const table = JSON.parse(event.data);
-
       this.props.updateTable(table);
     };
   }
