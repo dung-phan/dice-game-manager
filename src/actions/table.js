@@ -1,5 +1,5 @@
 import superagent from "superagent";
-const baseUrl = "http://localhost:4000";
+import { baseUrl } from "../constants";
 
 export const TABLES_FETCHED = "TABLES_FETCHED";
 export const FETCH_TABLE_SUCCESS = "FETCH_TABLE_SUCCESS";
